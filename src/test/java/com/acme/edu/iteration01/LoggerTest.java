@@ -26,11 +26,11 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     public void shouldLogInteger() throws IOException {
         //region when
         Logger.log(1);
-        Logger.flush();
+        Logger.flush("Int");
         Logger.log(0);
-        Logger.flush();
+        Logger.flush("Int");
         Logger.log(-1);
-        Logger.flush();
+        Logger.flush("Int");
         //endregion
 
         //region then
@@ -43,11 +43,11 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     public void shouldLogByte() throws IOException {
         //region when
         Logger.log((byte)1);
-        Logger.flush();
+        Logger.flush("Byte");
         Logger.log((byte)0);
-        Logger.flush();
+        Logger.flush("Byte");
         Logger.log((byte)-1);
-        Logger.flush();
+        Logger.flush("Byte");
         //endregion
 
         //region then

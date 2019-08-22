@@ -13,14 +13,19 @@ public class Logger {
     private static byte byteSum = 0;
     private static String type = null;
 
-    public static void flush() {
-        System.out.println(PRIMITIVE_PREFIX + intSum);
-        intSum = 0;
+    public static void flush(String curr_type) {
+        if (curr_type.equals("Int")) {
+            System.out.println(PRIMITIVE_PREFIX + intSum);
+            intSum = 0;
+        } else {
+            System.out.println(PRIMITIVE_PREFIX + byteSum);
+            byteSum = 0;
+        }
     }
 
     public static void log(int message) {
         if (intSum > 0 & message + intSum < 0) {
-            flush();
+            flush(type);
             // intSum = Math.abs(message + intSum);
             System.out.println(PRIMITIVE_PREFIX + Integer.MAX_VALUE);
             type = null;
@@ -34,13 +39,13 @@ public class Logger {
 
     public static void log(byte message) {
         if (byteSum > 0 & message + byteSum < 0) {
-            flush();
+            flush(type);
             intSum = Math.abs(message + intSum);
             System.out.println(PRIMITIVE_PREFIX + Byte.MAX_VALUE);
             type = null;
         }
         else {
-            intSum += message;
+            byteSum += message;
             type = "Byte";
         }
         //System.out.println(PRIMITIVE_PREFIX + message);
@@ -52,7 +57,7 @@ public class Logger {
 
     public static void log(String message) {
         if (!"String".equals(type) && type != null) {
-            flush();
+            flush(type);
         }
         type = "String";
         System.out.println(STRING_PREFIX + message);
