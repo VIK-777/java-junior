@@ -22,8 +22,8 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     }
     //endregion
 
-    /*
-    TODO: implement Logger solution to match specification as tests
+
+    // TODO: implement Logger solution to match specification as tests
 
     @Test
     public void shouldLogIntegersArray() throws IOException {
@@ -38,10 +38,11 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
+
     @Test
     public void shouldLogIntegersMatrix() throws IOException {
         //region when
-        Logger.log(new int[][] {{-1, 0, 1}, {1, 2, 3}, {-1, -2, -3}});
+        Logger.log((int[][])new int[][] {{-1, 0, 1}, {1, 2, 3}, {-1, -2, -3}});
         //endregion
 
         //region then
@@ -55,6 +56,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
+    /*
     @Test
     public void shouldLogIntegersMulitidimentionalArray() throws IOException {
         //region when
