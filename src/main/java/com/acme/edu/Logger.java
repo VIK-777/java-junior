@@ -13,9 +13,13 @@ public class Logger {
     private static byte byteSum = 0;
     private static String type = null;
 
+    private SuperCurrentAccumulator superCurrentAccumulator;
+    private static SuperConsoleSaver superConsoleSaver = new SuperConsoleSaver();
+
     public static void flush(String curr_type) {
         if (curr_type.equals("Int")) {
-            System.out.println(PRIMITIVE_PREFIX + intSum);
+            // System.out.println(PRIMITIVE_PREFIX + intSum);
+            superConsoleSaver.Save(intSum);
             intSum = 0;
         } else {
             System.out.println(PRIMITIVE_PREFIX + byteSum);
@@ -27,7 +31,8 @@ public class Logger {
         if (intSum > 0 & message + intSum < 0) {
             flush(type);
             // intSum = Math.abs(message + intSum);
-            System.out.println(PRIMITIVE_PREFIX + Integer.MAX_VALUE);
+            // System.out.println(PRIMITIVE_PREFIX + Integer.MAX_VALUE);
+            superConsoleSaver.Save(Integer.MAX_VALUE);
             type = null;
         }
         else {
@@ -38,9 +43,9 @@ public class Logger {
     }
 
     public static void log(byte message) {
-        if (byteSum > 0 & message + byteSum < 0) {
+        if (byteSum > 0 & (byte)(message + byteSum) < 0) {
             flush(type);
-            intSum = Math.abs(message + intSum);
+            byteSum = (byte)(message + byteSum + Byte.MAX_VALUE);
             System.out.println(PRIMITIVE_PREFIX + Byte.MAX_VALUE);
             type = null;
         }
